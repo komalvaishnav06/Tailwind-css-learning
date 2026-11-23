@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Practice</title>
+    <link rel="stylesheet" href="output.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-gray-100">
+    <aside id="sidebar" class="fixed left-0 top-0 h-screen w-16 bg-gray-900 text-white transition-all duration-300">
+        <button id="logobtn" class="flex items-center gap-4 p-5">
+            <i data-lucide="heart" class="shrink-0 text-pink-500"></i>
+            <span>My Website</span>
+            <!-- My logo -->
+        </button>
+        <hr class="mx-2 bg-gray-500">
+        <nav class="flex flex-col mt-4 gap-2">
+            <a href="#home"
+                class="group relative flex items-center gap-4 p-5 text-white bg-gray-500 hover:bg-gray-700 rounded-md">
+                <i data-lucide="home" class="shrink-0"></i>
+                <span class="absolute left-full ml-3
+                 top-1/2-translate-y-1/2 hidden
+                 group-hover:block whitespace-nowrap
+                 rounded-md bg-gray-700 px-3 py-2 text-sm shadow-lg                
+                ">
+                    Home
+                </span>
+
+                <!-- Expanded sidebar mein naam -->
+                <span class="sidebar-label hidden whitespace-nowrap">
+                    Home
+                </span>
+            </a>
+        </nav>
+        <nav class="flex flex-col mt-4 gap-2">
+            <a href="#income"
+                class="group relative flex items-center gap-4 p-5 text-white bg-gray-500 hover:bg-gray-700 rounded-md">
+                <i data-lucide="indian-rupee" class="shrink-0"></i>
+                <span class="absolute left-full ml-3
+                top-1/2-translate-y-1/2 hidden
+                group-hover:block whitespace-nowrap
+                rounded-md bg-gray-700 px-3 py-2 text-sm shadow-lg
+                ">
+                    income
+                </span>
+                <span class="sidebar-label hidden whitespace-nowrap">
+                    income
+                </span>
+            </a>
+        </nav>
+        <nav class="flex flex-col mt-4 gap-2">
+            <a href="#Contact"
+                class="group relative flex items-center gap-4 p-5 text-white bg-gray-500 hover:bg-gray-700 rounded-md">
+                <i data-lucide="Contact" class="shrink-0"></i>
+                <span class="absolute left-full ml-3
+                top-1/2-translate-y-1/2 hidden
+                group-hover:block whitespace-nowrap
+                rounded-md bg-gray-700 px-3 py-2 text-sm shadow-lg">
+                    Contact
+                </span>
+            </a>
+        </nav>
+        <nav class="flex flex-col mt-4 gap-2">
+            <a href="#About"
+                class="group relative flex items-center gap-4 p-5 text-white bg-gray-500 hover:bg-gray-700 rounded-md">
+                <i data-lucide="info" class="shrink-0"></i>
+                <span class="absolute left-full ml-3
+                top-1/2-translate-y-1/2 hidden
+                group-hover:block whitespace-nowrap
+                rounded-md bg-gray-700 px-3 py-2 text-sm shadow-lg">
+                    About
+                </span>
+            </a>
+        </nav>
+    </aside>
+    
+    <script>
+        lucide.createIcons();
+        const sidebar = document.getElementById("sidebar");
+        const logobtn = document.getElementById("logobtn");
+        const labels = document.querySelectorAll(".sidebar-label");
+        const tooltip = document.querySelectorAll(".sidebar-tooltip");
+
+        let isOpen = false;
+
+        logobtn.addEventListener("click", () => {
+            isOpen = !isOpen;
+
+            sidebar.classList.toggle("w-16", !isOpen);
+            sidebar.classList.toggle("w-56", isOpen);
+
+            labels.forEach(label => {
+                label.classList.toggle("hidden", !isOpen);
+
+            tooltip.forEach(tooltip => {
+                tooltip.classList.toggle("group-hover:block",!isOpen);
+            });
+            });
+        });
+    </script>
+</body>
+
+</html>
